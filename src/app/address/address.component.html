@@ -1,0 +1,28 @@
+<p>address works!</p>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="name" placeholder="Address" formControlName="address">
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please choose a adress.
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <label for="phoneNumber">Phone number</label>
+        <input type="text" class="form-control" id="name" placeholder="phone number" formControlName="phoneNumber">
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please enter phone number.
+        </div>
+    </div>
+</div>
+<div>
+    <button class="col-md-3 mb-2 btn btn-success " (click)="addAddress()" style="margin: 20px;">Add address</button>
+</div>

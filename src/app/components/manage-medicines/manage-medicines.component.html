@@ -1,0 +1,129 @@
+<div class="center" style="
+margin-left: 20%;
+margin-right: 20%;
+">
+    <form class="needs-validation" novalidate [formGroup]="medicineForm">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a name.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="company">Company</label>
+                <input type="text" class="form-control" id="company" placeholder="Company" formControlName="company">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a company name.
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a description name.
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="manufactureDate">manufactureDate</label>
+                <input type="date" class="form-control" id="manufactureDate" placeholder="manufactureDate"
+                    formControlName="manufactureDate">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a company name.
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">expiryDate</label>
+                <input type="date" class="form-control" id="validationCustom02" placeholder="expiryDate" value="Otto"
+                    formControlName="expiryDate">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a company name.
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">quantity</label>
+                <input type="number" class="form-control" id="validationCustom02" placeholder="quantity" value="Otto"
+                    formControlName="quantity" min="0" value="0" step="0.1">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a company name.
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">price</label>
+                <input type="number" class="form-control" id="validationCustom02" placeholder="price" value="Otto"
+                    formControlName="price" min="0" value="0" step="0.1">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a company name.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">mrp</label>
+                <input type="number" class="form-control" id="validationCustom02" placeholder="mrp" value="Otto"
+                    formControlName="mrp" min="0" value="0" step="0.1">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a company name.
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="batchId">batchId</label>
+                <input type="text" class="form-control" id="batchId" placeholder="batchId" formControlName="batchId">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a batchId name.
+                </div>
+            </div>
+
+            <div>
+                <input type="file" (change)="onFileChanged($event)" accept="image/png, image/jpeg">
+                <button (click)="onUpload()">Upload!</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <button class="col-md-3 mb-2 btn btn-success " (click)="search()" style="margin: 20px;">Search</button>
+            <button *ngIf="!editEnabled" class="col-md-3 mb-2 btn btn-primary" (click)="addProduct()" style="margin: 20px;">Add
+                medicine</button>
+            <button *ngIf="editEnabled" class="col-md-3 mb-2 btn btn-warning" (click)="updateProduct()" style="margin: 20px;">Update
+                medicine</button>
+            <button class="col-md-3 mb-2 btn btn-info" (click)="onClear()" style="margin: 20px;">Clear</button>
+        </div>
+
+        <div id="table" *ngIf="displayTable">
+            <app-table [data]="medicinesData" [keys]="keys" (rowClickEventEmitter)="rowClicked($event)" (editEventEmitter)="editClicked($event)" (deleteEventEmitter)="deleteClicked($event)"></app-table>
+        </div>
+    </form>
+
+</div>

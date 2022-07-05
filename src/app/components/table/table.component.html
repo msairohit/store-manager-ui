@@ -1,0 +1,38 @@
+<table class="table table-striped" *ngIf="this.data.result.length>0">
+    <thead>
+        <tr>
+            <th>
+                S.no
+            </th>
+            <th *ngFor="let key of keys">
+                {{key}}
+            </th>
+            <th>
+                edit
+            </th>
+            <th>
+                delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let res of data.result; let i = index">
+            <td>
+                {{i+1}}
+            </td>
+            <td *ngFor="let col of keys" (click)="rowClicked(res)">
+                {{res[col]}}
+            </td>
+            <td>
+                <button class="btn btn-info" (click)="editClicked(res)">edit</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteClicked(res)">delete</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="this.data.result.length<=0">
+No results found
+</div>

@@ -1,0 +1,23 @@
+<div class="card-group">
+    <div *ngFor="let item of dataFromParent">
+        <a [routerLink]="['/items', item.name]">
+            <div class="card" style="width: 18rem; margin: 20px;padding-left: 20px;padding-right: 20px;">
+                <img class="card-img-top" src="..." alt="{{item.name}} image">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">{{item.name}}</h5>
+                    <p class="card-text" style="height: 50px;text-align: center;overflow-x: auto;">{{item.description}}
+                    </p>
+                    <!-- <hr> -->
+                    <p class="card-text" style="height: 20px;"> cost : Rs {{item.price}}</p>
+                    <button class="btn btn-success" *ngIf="!item.addedToCart" style="margin-left: 20px;" [routerLink]=""
+                        (click)="addToCart(item.name);$event.preventDefault();
+                        $event.stopPropagation();">Add to card</button>
+
+                    <input *ngIf="item.addedToCart" type="number" class="form-control text-center"
+                        value={{item.cartQuantity}} (change)="onQuantityChange($event, item)"
+                        (click)="$event.stopPropagation();$event.preventDefault()">
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

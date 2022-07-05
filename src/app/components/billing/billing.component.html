@@ -1,0 +1,21 @@
+<div class="ng-autocomplete">
+    <ng-autocomplete #auto [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+        placeholder="Search your product" (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+        [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" [debounceTime]="1000" [focusFirst]="true"
+        (inputCleared)="onInputCleared($event)" [minQueryLength]="1">
+        <!-- TODO: [minQueryLength]="1" should be 3 min to avoid initial calls  -->
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+        <!-- <a [innerHTML]="item | json"></a> -->
+        <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
+</div>
+
+<div id="card" style="height: 100px;">
+    <app-card [dataFromParent]="data"></app-card>
+</div>
